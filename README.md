@@ -4,7 +4,9 @@ A high-performance, real-time renderer for the **A2UI (Agent-to-UI) protocol**, 
 
 ## 🎬 Live Demo
 
-https://github.com/cuneytm/A2UI-ProtocolViewer/blob/main/assets/a2ui-protocolviewer_playback.mov?raw=true
+<p align="center">
+  <video src="assets/a2ui-protocolviewer_playback.mov" width="100%" controls></video>
+</p>
 
 *Watch the A2UI Protocol Viewer in action, featuring high-fidelity Cyber-Trail animations and real-time multi-agent UI orchestration.*
 
