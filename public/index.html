@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A2UI Renderer - Gemini Powered</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Chart.js for graph rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-area">
+                    <span class="logo-icon">✨</span>
+                    <h1>A2UI <span class="highlight">Architect</span></h1>
+                </div>
+                <p class="subtitle">Next-Generation Agentic UI Protocol Renderer</p>
+            </div>
+            <div class="header-status">
+                <span class="status-dot"></span> System Online
+            </div>
+        </header>
+
+        <!-- System Flow Visualization -->
+        <section class="visualizer-section card">
+            <div class="card-header">
+                <h2>⚡ Live System Architecture</h2>
+                <div class="live-indicator">
+                    <span class="pulse"></span> Monitoring
+                </div>
+            </div>
+            <div id="flowCanvas" class="flow-canvas">
+                <!-- Nodes -->
+                <div class="node user" id="node-user">
+                    <div class="node-icon">👤</div>
+                    <div class="node-label">User</div>
+                </div>
+                <div class="node server" id="node-server">
+                    <div class="node-icon">⚙️</div>
+                    <div class="node-label">Server</div>
+                </div>
+
+                <div class="node coordinator" id="node-coordinator">
+                    <div class="node-icon">🧠</div>
+                    <div class="node-label">Coordinator</div>
+                </div>
+
+                <div class="processing-unit">
+                    <!-- Gemini sits above -->
+                    <div class="node model" id="node-gemini">
+                        <div class="node-icon">✨</div>
+                        <div class="node-label">Gemini 3</div>
+                    </div>
+
+                    <!-- Agents sit below -->
+                    <div class="agents-group">
+                        <div class="node agent" id="node-agent1">
+                            <div class="node-icon">📊</div>
+                            <div class="node-label">Market Agent</div>
+                        </div>
+                        <div class="node agent" id="node-agent2">
+                            <div class="node-icon">📰</div>
+                            <div class="node-label">News Agent</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="node renderer" id="node-renderer">
+                    <div class="node-icon">🎨</div>
+                    <div class="node-label">A2UI Renderer</div>
+                </div>
+
+                <!-- Connection Lines (SVG) -->
+                <svg class="connections" id="connectionsSvg">
+                    <!-- Paths will be drawn dynamically -->
+                </svg>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Input Section -->
+            <section class="input-section card">
+                <h2>✨ Describe Your UI</h2>
+                <form id="promptForm">
+                    <div class="input-group">
+                        <textarea id="promptInput"
+                            placeholder="E.g., Create a restaurant card for Pizza Palace with 4.5 stars..." rows="4"
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" id="generateBtn">
+                        <span class="btn-icon">✨</span>
+                        <span class="btn-label">Generate UI</span>
+                    </button>
+                </form>
+
+                <!-- Example Prompts -->
+                <div class="examples">
+                    <p class="examples-title">Try these examples:</p>
+                    <div class="example-chips">
+                        <button class="chip"
+                            data-prompt="Create a book card for 1984 by George Orwell, published in 1949">Book
+                            Card</button>
+                        <button class="chip"
+                            data-prompt="Create a weather widget showing 72°F, Sunny, with humidity 65% for San Francisco">Weather
+                            Widget</button>
+                        <button class="chip"
+                            data-prompt="Create a user profile for Jane Smith, Software Engineer at TechCorp, with email jane@techcorp.com">User
+                            Profile</button>
+                        <button class="chip"
+                            data-prompt="Create a product card for iPhone 15 Pro, $999, with 5 star rating">Product
+                            Card</button>
+                        <button class="chip"
+                            data-prompt="Create a pie chart showing monthly sales: January $12000, February $15000, March $18000, April $14000">📊
+                            Pie Chart</button>
+                        <button class="chip"
+                            data-prompt="Create a bar chart comparing quarterly revenue: Q1 $50k, Q2 $65k, Q3 $72k, Q4 $85k">📈
+                            Bar Chart</button>
+                    </div>
+                </div>
+
+
+            </section>
+
+            <!-- Debug Panel -->
+            <section class="debug-section card">
+                <div class="debug-header" onclick="toggleDebugPanel()">
+                    <h2>🔍 Debug Console - Raw Request/Response</h2>
+                    <span id="debugToggle" class="toggle-icon">▼</span>
+                </div>
+                <div id="debugPanel" class="debug-panel">
+                    <div class="debug-tabs">
+                        <button class="debug-tab active" data-tab="request">📤 Request</button>
+                        <button class="debug-tab" data-tab="response">📥 Response Stream</button>
+                        <button class="debug-tab" data-tab="console">📋 Console Logs</button>
+                    </div>
+
+                    <div class="debug-content">
+                        <div id="debugRequest" class="debug-tab-content active">
+                            <pre id="requestData" class="debug-code">No request sent yet</pre>
+                        </div>
+                        <div id="debugResponse" class="debug-tab-content">
+                            <pre id="responseData" class="debug-code">No response received yet</pre>
+                        </div>
+                        <div id="debugConsole" class="debug-tab-content">
+                            <pre id="consoleData" class="debug-code">Console initialized...</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Output Section -->
+            <div class="output-container">
+                <!-- Rendered UI Panel -->
+                <section class="preview-section card">
+                    <h2>🎨 Rendered UI</h2>
+                    <div id="previewContainer" class="preview-container">
+                        <div class="empty-state">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" />
+                                <path d="M3 9h18M9 21V9" />
+                            </svg>
+                            <p>Your generated UI will appear here</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- A2UI Messages Panel -->
+                <section class="messages-section card">
+                    <h2>📡 A2UI Messages</h2>
+                    <div id="messagesContainer" class="messages-container">
+                        <div class="empty-state">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                            </svg>
+                            <p>Generate a UI to see A2UI messages here</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+    <script src="visualizer.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+{
+    "name": "gemini-search-test",
+    "version": "1.0.0",
+    "description": "Test suite for Gemini API with Google Search",
+    "type": "module",
+    "scripts": {
+        "start": "tsx server.ts",
+        "test": "tsx test-gemini.ts",
+        "test:single": "tsx test-gemini.ts",
+        "test:a2ui": "tsx test-a2ui.ts",
+        "test:a2ui:single": "tsx test-a2ui.ts",
+        "example:a2ui": "tsx example-a2ui.ts",
+        "debug:a2ui": "tsx debug-a2ui.ts",
+        "dev": "tsx gemini-search.ts"
+    },
+    "keywords": [
+        "gemini",
+        "google-ai",
+        "test",
+        "ai"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "@google/genai": "^0.9.0",
+        "cors": "^2.8.5",
+        "express": "^5.2.1",
+        "mime": "^4.0.0"
+    },
+    "devDependencies": {
+        "@types/node": "^22.0.0",
+        "tsx": "^4.7.0",
+        "typescript": "^5.3.0"
+    }
+}
