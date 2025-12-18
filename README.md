@@ -2,6 +2,12 @@
 
 A high-performance, real-time renderer for the **A2UI (Agent-to-UI) protocol**, powered by Gemini 2.5 Flash. This project showcases an advanced multi-agent architecture where AI agents autonomously design and stream their own user interfaces.
 
+## 🎬 Live Demo
+
+https://github.com/cuneytm/A2UI-ProtocolViewer/blob/main/assets/a2ui-protocolviewer_playback.mov?raw=true
+
+*Watch the A2UI Protocol Viewer in action, featuring high-fidelity Cyber-Trail animations and real-time multi-agent UI orchestration.*
+
 ## 🚀 Features
 
 - **Live System Architecture**: A real-time, high-fidelity topology map with "Cyber-Trail" animations showing the flow of data between User, Server, Coordinator, Agents, and Gemini.
